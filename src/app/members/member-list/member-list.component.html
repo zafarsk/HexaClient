@@ -1,0 +1,38 @@
+
+<div class="row justify-content-center">
+    <div class="col-4">
+        <app-register ></app-register>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <table class="table">
+        <tr >
+            <td>Name</td>
+            <td>Date Of Birth</td>
+            <td>Salary</td>
+            <td>Current Age</td>
+        </tr>
+    <tr class="col-2" *ngFor="let member of members">
+        <td>{{member.name}}</td>
+        <td>{{ member.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
+        <td>{{member.salary}}</td>
+        <td>{{member.age}}</td>
+    </tr>
+</table>
+</div>
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalCount"
+        [itemsPerPage]="pagination.pageSize"
+        [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" 
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+ 
+</pagination>
+
+</div>
